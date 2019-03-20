@@ -1,7 +1,7 @@
 # zabbix-OpenVPN-monitoring
 Monitoring OpenVPN services states with zabbix.
 
-Suported: CentOS 7, Ubuntu 16+
+Suported: CentOS 7, Ubuntu 18+
 
 #### Files in repository:
 1) Template Template OpenVPN.xml - template for OpenVPN monitoring. Import on zabbix server.
