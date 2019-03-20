@@ -37,9 +37,9 @@ case "$1" in
     exit 1
   fi
 
-  state="$(sudo systemctl status openvpn@$1)"
+  state="$(sudo systemctl status openvpn@$1 | grep running | wc -l)"
 
-  if [ "$state" == "Running" ]; then
+  if [ "$state" == "1" ]; then
     echo 1
   else
     echo 0
