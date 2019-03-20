@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2019-03-20T13:09:12Z</date>
+    <date>2019-03-20T13:40:08Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -30,7 +30,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>openvpn.discovery</key>
-                    <delay>30</delay>
+                    <delay>1h</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -58,11 +58,11 @@
                     <item_prototypes>
                         <item_prototype>
                             <name>{#OPENVPNSERVICE} status</name>
-                            <type>7</type>
+                            <type>0</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>openvpn.status[{#OPENVPNSERVICE}]</key>
-                            <delay>60</delay>
+                            <delay>1m</delay>
                             <history>7d</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -106,10 +106,10 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template OpenVPN:openvpn.status[{#OPENVPNSERVICE}].last(0)}=0</expression>
+                            <expression>{Template OpenVPN:openvpn.status[{#OPENVPNSERVICE}].last(#3)}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Zimbra service ({#ZIMBRASERVICE}) is not running on {HOSTNAME}</name>
+                            <name>OpenVPN ({#OPENVPNSERVICE}) is not running on {HOSTNAME}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
