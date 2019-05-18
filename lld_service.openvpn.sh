@@ -4,7 +4,7 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-openvpn_discovery="$(sudo ps aux | grep openvpn | awk '{print $15}' | sed 's/.conf//g' | sed '/^$/d;s/[[:blank:]]//g')"
+openvpn_discovery="$(ps aux | grep openvpn | awk '{print $15}' | sed 's/.conf//g' | sed '/^$/d;s/[[:blank:]]//g')"
 
 case "$1" in
   discovery)
@@ -37,7 +37,7 @@ case "$1" in
     exit 1
   fi
 
-  state="$(sudo systemctl status openvpn@$1 | grep running | wc -l)"
+  state="$(systemctl status openvpn@$1 | grep running | wc -l)"
 
   if [ "$state" == "1" ]; then
     echo 1
